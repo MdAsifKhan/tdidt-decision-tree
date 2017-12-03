@@ -9,6 +9,7 @@ All scripts should be in the same folder.  Tree is populated with samples of pos
 ## Running the Algorithm:
 
 See 'python tdidt.py --help' for further options
+
 '''
 arguments:
 -h, --help	show the help message
@@ -17,19 +18,25 @@ arguments:
 --mode : String can take one of two values: ‘train’ or ‘test’, ‘train’ mode is for training decision tree and test mode is for evaluating trained tree on test data.
 --dot_file_name: Name of file to store dot format of decision tree.
 '''
-## Train the model
+
+## Train Decision Tree
+
 '''
 python tdidt.py --data_file gene_expression_training.csv --max_depth 3 --mode train --dot_file_name tree.dot --pickle_file_name tree.pickle
 '''
+
 ## To generate png file from dot
 '''
 dot -Tpng tree.dot -o tree.png
 '''
-## Test the Model
+## Test Decision-Tree
+
 '''
 python tdidt.py --data_file gene_expression_test.csv --mode test
 '''
+
 ## Prunning Decision Tree
+
 '''
 Arguements
 --mode : String to specify pruning mode: ‘heuristic’ or ‘pessimistic’.
@@ -47,9 +54,18 @@ Arguements
 2. Prune the tree on training set.
 3. Test the tree on test set.
 
-## Prune the Model
+## Prune Decision Tree
+
 '''
 python prune_tree.py --mode heuristic --dot_file_name prune_heuristic.dot --pickle_file_input tree.pickle --pickle_file_output heuristic_prune_tree.pickle
+'''
+
+## Rule Extraction
+
+To extract rules from a trainded decision tree:
+
+'''
+python rule_extraction.py --pickle_file_name tree.pickle
 '''
 
 ## Dependencies
